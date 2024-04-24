@@ -12,24 +12,17 @@ text_file = open('paragraphs.txt', 'r')
 text = text_file.read()
 text_file.close()
 
-# Split the text into words
-word_tokens = word_tokenize(text)
+word = word_tokenize(text)
 
 # lowering each word
-lowered_words = [word.lower() for word in word_tokens]
+lower_words = [word.lower() for word in word]
 
-# setting it to english
 stop_words = set(stopwords.words("english"))
 
-# Filter out stopwords
-data_without_stopwords = [word for word in lowered_words if word not in stop_words]
-
-# print(data_without_stopwords)
+without_stopwords = [word for word in lower_words if word not in stop_words]
 
 # freq of each word using counter
-freq_word = Counter(data_without_stopwords)
-print(freq_word)
+frequency_word = Counter(without_stopwords)
+print(frequency_word)
 
-# Join back the filtered text
-filtered_text = ' '.join(data_without_stopwords)
-# print(filtered_text)
+filtered_text = ' '.join(without_stopwords)
